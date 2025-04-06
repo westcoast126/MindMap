@@ -1,0 +1,10 @@
+# Mind Map/backend/requirements.txt
+fastapi>=0.100.0
+uvicorn[standard]>=0.20.0
+
+# --- Future Additions ---
+# databases[sqlite] # Or postgresql, etc. for storing user data, premium content
+# passlib[bcrypt] # For password hashing
+# python-jose[cryptography] # For JWT tokens (authentication)
+# python-multipart # If file uploads are needed later
+# stripe # Example for payment processing (monetization) 
