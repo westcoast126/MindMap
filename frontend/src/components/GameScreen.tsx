@@ -49,8 +49,13 @@ interface GameScreenProps {
     puzzleId: string; // Example: Pass the puzzle ID to start
 }
 
-// Get the current window's origin and replace the port for the backend
-const API_BASE_URL = window.location.origin.replace(/:\d+$/, ':8001');
+// Get the backend URL based on environment
+const API_BASE_URL = window.location.hostname.includes('github.dev')
+    ? `https://${window.location.hostname.replace('5173', '8001')}`
+    : 'http://127.0.0.1:8001';
+
+console.log('Using API URL:', API_BASE_URL); // Debug log
+
 const NODE_OFFSET_X = 100; // How far horizontally new nodes appear from parent
 const NODE_OFFSET_Y = 50;  // How far vertically new nodes appear from parent
 const NODE_AREA_WIDTH = 500; // Approx width of map area for initial placement

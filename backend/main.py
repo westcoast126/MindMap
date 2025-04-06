@@ -8,24 +8,25 @@ import time # Added time import
 app = FastAPI()
 
 # --- CORS Configuration --- 
-# Allow requests from the frontend development server
 origins = [
-    "http://localhost:5173",  # Default Vite dev server port
+    "http://localhost:5173",
     "http://127.0.0.1:5173",
     "https://localhost:5173",
     "https://127.0.0.1:5173",
-    # Allow all Codespace domains
+    # Codespace domains
+    "https://*.app.github.dev",
     "https://*.github.dev",
-    "https://*.preview.app.github.dev",
-    # Add other origins if needed
+    # Allow all during development
+    "*"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Temporarily allow all origins for testing
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # --- Pydantic Models ---
